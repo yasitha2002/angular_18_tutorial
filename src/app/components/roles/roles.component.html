@@ -1,59 +1,22 @@
-
-<p>roles works!</p>
-
-<p>
-
-This is {{firstName}} with version {{AngularVersion}}
-
-Today is {{currenDate}}
-</p>
-
-<div class= "col-3"> 
-    {{firstName}}             <!-- This is interpolation..printing variables inside a text.   Component -> View   -->
-</div>
-
 <div class="row">
-
-<div class = "col-3">
-    <input type="text" [value]="course_status"  class="form-control"/>       <!-- This is property binding .(As the value is dynamic it is wrapped inside square brackets)-->
-              <!--    It lets you set the value of DOM properties/Angular component/directive input properties from your component class -->
-</div>      
-
-<div class = "col-3">
-    <input [type] ="inputType" [value]="course_status"  class="form-control"/>       <!-- Another property binding .(Both the value and type are dynamic it is wrapped inside square brackets)                         -->
+    <div class="col-4">
+        <div class="table-responsive">
+  <table class="table table-bordered">
+    <thead> 
+        <tr>
+        <th>Sr No</th>
+        <th>Role</th>
+        </tr>
+    </thead>
+   <tbody>
+    <tr  *ngFor="let role of roleList; let srno = index" >
+    <td>{{srno}}</td>
+    <td>{{role.role}}</td>
+    
+  </tr>
+  </tbody>
+  </table>
 </div>
-</div>
 
-<br/>
-
-<div class="row">
-   <!-- Here this is two way data binding .To do this first you should import the 'FormsModule' inside imports in component decorator-->
-    <!-- Then add this ngModel . This can only be used in the input element -->
-    <!-- Component → View → Component (both directions) --> 
-    <div class = "col-3">
-   <input type="text" [(ngModel)]= "firstName" />
     </div>
-
-    <div class = "col-3">
-        
-        <select [(ngModel)]= "selectStatus">              <!-- Here another two way data binding example-->
-            <option value="Colombo">Colombo</option>  
-            <option value="Nuwara">Nuwara</option>
-            <option value="Jaffna">Jaffna</option>
-        </select>
-    </div>
-
 </div>
-
-<br/>
-
-<div class="row">
-<div class = "col-3">
-
-    <button class="btn btn-success" (click)="ShowWelcomeAlert()">Show Alert</button>
-     </div>
-
-</div>
-<p>
-    {{selectStatus}}
-</p>
