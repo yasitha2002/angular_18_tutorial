@@ -1,13 +1,16 @@
-import { Component, inject , OnInit  } from '@angular/core';
+import { Component, inject , OnInit, signal  } from '@angular/core';
 import { Client } from '../../model/class/Client';
 import { FormsModule } from '@angular/forms';
 import { ClientService } from '../../services/client.service';
-import {APIResponseModel} from '../../model/interface/role' ;
+import {APIResponseModel, ClientProject} from '../../model/interface/role' ;
+import { CommonModule,AsyncPipe } from '@angular/common';
+import { Observable } from 'rxjs';
+import { AlertComponent } from '../../reusableComponents/alert/alert.component';
 
 @Component({
   selector: 'app-client',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule,AsyncPipe,AlertComponent],
   templateUrl: './client.component.html',
   styleUrl: './client.component.css'
 })
@@ -15,7 +18,12 @@ export class ClientComponent implements OnInit{
     clientObj:Client = new Client();
     clientList:Client[]=[];
  
-    clientService = inject(ClientService)
+    clientService = inject(ClientService);
+
+    userList$:Observable<any> = new Observable<any>;
+
+    firstName = signal("Angular 18");
+    
 
     onSaveClient(){
          debugger;
@@ -28,6 +36,10 @@ export class ClientComponent implements OnInit{
             alert(res.message)
           }
     });
+  }
+
+  ChangeFname(){
+    this.firstName.set("Angular 18 Updated");
   }
 
   onEdit(data:Client){
@@ -53,6 +65,7 @@ export class ClientComponent implements OnInit{
 
     ngOnInit():void{
        this.loadClientData();
+       this.userList$ = this.clientService.getAllUser();
     }
 
     loadClientData(){
@@ -61,5 +74,6 @@ export class ClientComponent implements OnInit{
       });
       
   }
+
 }
   
