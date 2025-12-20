@@ -1,1 +1,7 @@
 <p>employee works!</p>
+<ul> 
+    <h1>Meetings Dates </h1>
+    @for(item of MeetingList;track $index){
+    <li>{{item.meetingDate}}</li>
+    }
+</ul>

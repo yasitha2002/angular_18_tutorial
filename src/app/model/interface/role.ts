@@ -34,3 +34,18 @@ export interface ClientProject {
   clientName: string;
   clientProjectId: number;
 }
+
+export interface IMeeting {
+  meetingDate: string
+  meetingTitle: string
+  meetingMedium: string
+  projectMeetingId: number
+  startTime: string
+  endTime: string
+  projectName: string
+  companyName: string
+  clientId: number
+  clientPersonNames: string
+  leadByEmployeName: string
+  meetingStatus: string
+}
