@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { authGuard } from './services/auth.guard';
 import { PgOneComponent } from './components/pg-one/pg-one.component';
+import { PgTwoComponent } from './components/pg-two/pg-two.component';
 
 export const routes: Routes = [
 
@@ -50,6 +51,10 @@ export const routes: Routes = [
     {
         path:'pgOne',
         component:PgOneComponent ,
+    },
+    {
+        path:'pgTwo',
+        component:PgTwoComponent ,
     }
         
     
