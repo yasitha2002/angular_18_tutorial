@@ -3,11 +3,10 @@ import { MasterService } from '../../services/master.service';
 import {IDesignation,APIResponseModel} from '../../model/interface/role' ;
 
 @Component({
-  selector: 'app-designation',
-  standalone: true,
-  imports: [],
-  templateUrl: './designation.component.html',
-  styleUrl: './designation.component.css'
+    selector: 'app-designation',
+    imports: [],
+    templateUrl: './designation.component.html',
+    styleUrl: './designation.component.css'
 })
 export class DesignationComponent implements OnInit{
   masterservice= inject(MasterService);

@@ -3,11 +3,10 @@ import { ClientService } from '../../services/client.service';
 import { APIResponseModel, IMeeting } from '../../model/interface/role';
 
 @Component({
-  selector: 'app-employee',
-  standalone: true,
-  imports: [],
-  templateUrl: './employee.component.html',
-  styleUrl: './employee.component.css'
+    selector: 'app-employee',
+    imports: [],
+    templateUrl: './employee.component.html',
+    styleUrl: './employee.component.css'
 })
 export class EmployeeComponent implements OnInit {
    clientsrv = inject(ClientService);

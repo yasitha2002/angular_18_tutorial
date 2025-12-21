@@ -4,11 +4,10 @@ import { DesignationComponent } from '../../components/designation/designation.c
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-master',
-  standalone: true,
-  imports: [RolesComponent,DesignationComponent,CommonModule],
-  templateUrl: './master.component.html',
-  styleUrl: './master.component.css'
+    selector: 'app-master',
+    imports: [RolesComponent, DesignationComponent, CommonModule],
+    templateUrl: './master.component.html',
+    styleUrl: './master.component.css'
 })
 export class MasterComponent {
       currentcomponent:String='';

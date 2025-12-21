@@ -7,11 +7,10 @@ import {  DatePipe } from '@angular/common';
 import { AlertComponent } from '../../reusableComponents/alert/alert.component';
 
 @Component({
-  selector: 'app-client-project',
-  standalone: true,
-  imports: [ReactiveFormsModule,DatePipe,AlertComponent],
-  templateUrl: './client-project.component.html',
-  styleUrl: './client-project.component.css'
+    selector: 'app-client-project',
+    imports: [ReactiveFormsModule, DatePipe, AlertComponent],
+    templateUrl: './client-project.component.html',
+    styleUrl: './client-project.component.css'
 })
 export class ClientProjectComponent implements OnInit{
    

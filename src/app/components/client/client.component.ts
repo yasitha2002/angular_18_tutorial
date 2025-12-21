@@ -8,11 +8,10 @@ import { Observable } from 'rxjs';
 import { AlertComponent } from '../../reusableComponents/alert/alert.component';
 
 @Component({
-  selector: 'app-client',
-  standalone: true,
-  imports: [FormsModule,CommonModule,AsyncPipe,AlertComponent],
-  templateUrl: './client.component.html',
-  styleUrl: './client.component.css'
+    selector: 'app-client',
+    imports: [FormsModule, CommonModule, AsyncPipe, AlertComponent],
+    templateUrl: './client.component.html',
+    styleUrl: './client.component.css'
 })
 export class ClientComponent implements OnInit{
     clientObj:Client = new Client();
