@@ -1,85 +1,112 @@
-<div [style]="{ padding: '30px', backgroundColor: '#fff', fontFamily: 'sans-serif' }">
+<div class="p-4" style="background-color: #fff; font-family: sans-serif;">
   
-  <div [style]="{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }">
-    <div [style]="{ textAlign: 'center' }">
-      <div [style]="{ color: '#0056b3', marginBottom: '8px' }">Receipt- Amount</div>
-      <div [style]="{ backgroundColor: '#a2d2ff', padding: '10px 60px', borderRadius: '15px', fontWeight: '500', minWidth: '150px' }">
+  <div class="d-flex justify-content-between align-items-center mb-5 px-2">
+    <div class="text-center">
+      <div class="text-primary mb-2 fw-medium">Receipt- Amount</div>
+      <div class="px-5 py-2 rounded-pill fw-bold bg-primary-subtle text-primary" 
+           style="min-width: 180px; font-size: 1.1rem;">
         {{ receiptAmount | number:'1.2-2' }}
       </div>
     </div>
 
-    <div [style]="{ textAlign: 'center', display: 'flex', alignItems: 'center', gap: '15px' }">
+    <div class="text-center d-flex align-items-center gap-3">
       <div>
-        <div [style]="{ color: '#0056b3', marginBottom: '8px' }">Allocated Amount</div>
-        <div [style]="{ backgroundColor: '#a2d2ff', padding: '10px 60px', borderRadius: '15px', fontWeight: '500', minWidth: '150px' }">
+        <div class="text-primary mb-2 fw-medium">Allocated Amount</div>
+        <div class="px-5 py-2 rounded-pill fw-bold bg-primary-subtle text-primary" 
+             style="min-width: 180px; font-size: 1.1rem;">
           {{ allocatedTotal | number:'1.2-2' }}
         </div>
       </div>
-      <div [style]="{ backgroundColor: '#d9d9d9', padding: '10px 20px', borderRadius: '5px', marginTop: '25px', fontSize: '14px' }">100%</div>
+      <div class="badge bg-secondary-subtle text-dark p-2 px-3 mt-4" style="border-radius: 6px;">100%</div>
     </div>
 
-    <div [style]="{ textAlign: 'center' }">
-      <div [style]="{ color: '#0056b3', marginBottom: '8px' }">Remaining Balance</div>
-      <div [style]="{ backgroundColor: '#a2d2ff', padding: '10px 60px', borderRadius: '15px', fontWeight: '500', minWidth: '150px' }">
+    <div class="text-center">
+      <div class="text-primary mb-2 fw-medium">Remaining Balance</div>
+      <div class="px-5 py-2 rounded-pill fw-bold bg-primary-subtle text-primary" 
+           style="min-width: 180px; font-size: 1.1rem;">
         {{ remainingBalance | number:'1.2-2' }}
       </div>
     </div>
   </div>
 
-  <p-table [value]="details" [tableStyle]="{ 'min-width': '100%' }">
-    <ng-template pTemplate="header">
-      <tr [style]="{ borderBottom: '1px solid #f0f0f0' }">
-        <th [style]="{ border: 'none', textAlign: 'left', padding: '15px', color: '#333', fontSize: '14px' }">Facility No</th>
-        <th [style]="{ border: 'none', textAlign: 'left', padding: '15px', color: '#333', fontSize: '14px' }">Amount</th>
-        <th [style]="{ border: 'none', textAlign: 'left', padding: '15px', color: '#333', fontSize: '14px' }">BSP NO</th>
-        <th [style]="{ border: 'none', textAlign: 'center', padding: '15px', color: '#333', fontSize: '14px' }">Reason</th>
-        <th [style]="{ border: 'none', textAlign: 'center', padding: '15px', color: '#333', fontSize: '14px' }">Amount Allocation</th>
-      </tr>
-    </ng-template>
-
-    <ng-template pTemplate="body" let-row>
-      <tr [style]="{ borderBottom: '1px solid #f0f0f0' }">
-        <td [style]="{ border: 'none', padding: '20px 15px', fontSize: '14px' }">{{ row.facilityNo }}</td>
-        <td [style]="{ border: 'none', padding: '20px 15px', fontSize: '14px' }">{{ row.amount | number:'1.2-2' }}</td>
-        <td [style]="{ border: 'none', padding: '20px 15px', fontSize: '14px' }">{{ row.bspNo }}</td>
+  <div class="trezo-card-content">
+    <div class="card border-0 basic-table table-responsive">
+      <p-table 
+        #dt
+        [value]="details" 
+        [rowHover]="true" 
+        [paginator]="true" 
+        [rows]="3"
+        currentPageReportTemplate="Page {currentPage} of {totalPages}"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{'min-width': '1000px', 'table-layout': 'fixed'}"
+        class="table table-striped px-2">
         
-        <td [style]="{ border: 'none', textAlign: 'center' }">
-          <div [style]="{ display: 'inline-flex', alignItems: 'center', backgroundColor: '#d9d9d9', borderRadius: '4px', width: '180px', padding: '5px 10px', justifyContent: 'space-between' }">
-            <span [style]="{ fontSize: '14px' }">{{ row.reason }}</span>
-            <i class="pi pi-sort-down-fill" [style]="{ fontSize: '12px' }"></i>
-          </div>
-        </td>
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="border-0 p-3 text-dark fs-small" style="width: 20%;">Facility No</th>
+            <th class="border-0 p-3 text-dark fs-small" style="width: 15%;">Amount</th>
+            <th class="border-0 p-3 text-dark fs-small" style="width: 20%;">BSP NO</th>
+            <th class="border-0 p-3 text-dark fs-small text-center" style="width: 250px;">Reason</th>
+            <th class="border-0 p-3 text-dark fs-small text-center" style="width: 200px;">Amount Allocation</th>
+          </tr>
+        </ng-template>
 
-        <td [style]="{ border: 'none', textAlign: 'center' }">
-          <div [style]="{ display: 'inline-flex', alignItems: 'center', backgroundColor: '#d9d9d9', borderRadius: '4px', width: '120px', padding: '5px 10px', justifyContent: 'center' }">
-            <span [style]="{ fontSize: '14px' }">{{ row.allocatedAmount | number:'1.2-2' }}</span>
-          </div>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+        <ng-template pTemplate="body" let-row>
+          <tr class="border-bottom">
+            <td class="border-0 p-3">{{ row.facilityNo }}</td>
+            <td class="border-0 p-3">{{ row.amount | number:'1.2-2' }}</td>
+            <td class="border-0 p-3">{{ row.bspNo }}</td>
+            
+            <td class="border-0 p-3 text-center">
+              <div style="width: 220px; margin: 0 auto;">
+                <p-floatlabel variant="on">
+                  <p-select 
+                    [options]="reasons" 
+                    [(ngModel)]="row.reason" 
+                    appendTo="body"
+                    class="w-100" 
+                    placeholder="Select Reason">
+                  </p-select>
+                </p-floatlabel>
+              </div>
+            </td>
 
-  <div [style]="{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginTop: '15px', gap: '10px' }">
-    <span [style]="{ fontSize: '14px', color: '#333' }">Page 1 of 2</span>
-    <button [style]="{ border: '1px solid #ddd', backgroundColor: '#fff', borderRadius: '4px', padding: '5px' }">
-      <i class="pi pi-angle-left" [style]="{ color: '#ccc' }"></i>
-    </button>
-    <button [style]="{ border: '1px solid #ddd', backgroundColor: '#fff', borderRadius: '4px', padding: '5px' }">
-      <i class="pi pi-angle-right" [style]="{ color: '#666' }"></i>
-    </button>
+            <td class="border-0 p-3 text-center">
+              <div style="width: 150px; margin: 0 auto;">
+                <input 
+                  type="text" 
+                  pInputText 
+                  [(ngModel)]="row.allocatedAmount"
+                  class="form-control text-center w-100"
+                  style="height: 38px; font-size: 13px;"
+                />
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="paginatorleft">
+            <span class="fs-small text-muted">Total Records: {{details.length}}</span>
+        </ng-template>
+      </p-table>
+    </div>
   </div>
 
-  <div [style]="{ display: 'flex', gap: '20px', marginTop: '40px' }">
+  <div class="d-flex gap-3 mt-5">
     <p-button 
         label="CONFIRM" 
         icon="pi pi-check-circle" 
-        iconPos="right"
-        [style]="{ backgroundColor: '#007bff', border: 'none', borderRadius: '12px', padding: '12px 25px', fontWeight: 'bold' }">
+        iconPos="right" 
+        [raised]="true" 
+        class="custom-btn">
     </p-button>
     
     <p-button 
         label="SAVE" 
-        [style]="{ backgroundColor: '#007bff', border: 'none', borderRadius: '12px', padding: '12px 45px', fontWeight: 'bold' }">
+        [raised]="true" 
+        class="custom-btn" 
+        styleClass="px-5">
     </p-button>
   </div>
 </div>

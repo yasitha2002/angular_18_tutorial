@@ -1,88 +1,122 @@
-<div [style]="{ padding: '20px', backgroundColor: '#fff', fontFamily: 'sans-serif' }">
+<div class="p-3 bg-white" style="font-family: sans-serif;">
   
-  <div [style]="{ 
-    backgroundColor: '#d9d9d9', 
-    padding: '15px', 
-    textAlign: 'center', 
-    fontSize: '20px', 
-    marginBottom: '30px',
-    color: '#333'
-  }">
-    BSP Details In a HTML Format
+  <div class="text-center py-2 mb-3 fs-6 fw-medium bg-light text-dark rounded">
+    BSP Details
   </div>
 
-  <p-table [value]="details" [tableStyle]="{ 'min-width': '100%' }">
-    <ng-template pTemplate="header">
-      <tr [style]="{ borderBottom: '1px solid #f0f0f0' }">
-        <th [style]="{ width: '40px', border: 'none' }"></th>
-        <th [style]="{ textAlign: 'left', padding: '10px', border: 'none', color: '#333', fontSize: '14px' }">Facility No</th>
-        <th [style]="{ textAlign: 'left', padding: '10px', border: 'none', color: '#333', fontSize: '14px' }">Application NO</th>
-        <th [style]="{ textAlign: 'left', padding: '10px', border: 'none', color: '#333', fontSize: '14px' }">Transaction No</th>
-        <th [style]="{ textAlign: 'center', padding: '10px', border: 'none', color: '#333', fontSize: '14px' }">Status</th>
-        <th [style]="{ textAlign: 'left', padding: '10px', border: 'none', color: '#333', fontSize: '14px' }">Type</th>
-        <th [style]="{ textAlign: 'left', padding: '10px', border: 'none', color: '#333', fontSize: '14px' }">Due Date</th>
-        <th [style]="{ textAlign: 'center', padding: '10px', border: 'none', color: '#333', fontSize: '14px' }">Reason</th>
-        <th [style]="{ textAlign: 'center', padding: '10px', border: 'none', color: '#333', fontSize: '14px' }">Amount Allocation</th>
-        <th [style]="{ width: '20px', border: 'none' }"></th>
-      </tr>
-    </ng-template>
+  <div class="trezo-card-content">
+    <div class="card border-0 basic-table table-responsive">
+      <p-table 
+        #dt
+        [value]="details" 
+        [rowHover]="true"
+        [paginator]="true" 
+        [rows]="3" 
+        currentPageReportTemplate="Page {currentPage} of {totalPages}"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '1000px', 'table-layout': 'fixed' }"
+        responsiveLayout="scroll"
+        class="table table-striped"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 40px;" class="border-0 px-1"></th>
+            <th class="border-0 px-1 py-2 text-dark" style="width: 110px; font-size: 12px;">Facility No</th>
+            <th class="border-0 px-1 py-2 text-dark" style="width: 130px; font-size: 12px;">Application NO</th>
+            <th class="border-0 px-1 py-2 text-dark" style="width: 130px; font-size: 12px;">Transaction No</th>
+            <th class="border-0 px-1 py-2 text-dark text-center" style="width: 100px; font-size: 12px;">Status</th>
+            <th class="border-0 px-1 py-2 text-dark" style="width: 110px; font-size: 12px;">Type</th>
+            <th class="border-0 px-1 py-2 text-dark" style="width: 110px; font-size: 12px;">Due Date</th>
+            <th class="border-0 px-1 py-2 text-dark text-center" style="width: 180px; font-size: 12px;">Reason</th>
+            <th class="border-0 px-1 py-2 text-dark text-center" style="width: 190px; font-size: 12px;">Allocation</th>
+          </tr>
+        </ng-template>
 
-    <ng-template pTemplate="body" let-row>
-      <tr [style]="{ borderBottom: '1px solid #f0f0f0', height: '60px' }">
-        <td [style]="{ border: 'none', textAlign: 'center' }">
-          <p-checkbox [(ngModel)]="row.isSelected" [binary]="true"></p-checkbox>
-        </td>
+        <ng-template pTemplate="body" let-row>
+          <tr class="border-bottom" style="height: 60px;">
+            <td class="border-0 px-1 text-center">
+              <p-checkbox [(ngModel)]="row.isSelected" [binary]="true"></p-checkbox>
+            </td>
 
-        <td [style]="{ border: 'none', fontSize: '14px' }">{{row.facilityNo}}</td>
-        <td [style]="{ border: 'none', fontSize: '14px', color: '#666' }">{{row.applicationNo}}</td>
-        <td [style]="{ border: 'none', fontSize: '14px', color: '#666' }">{{row.transactionNo}}</td>
+            <td class="border-0 px-1 py-2" style="font-size: 12px;">{{row.facilityNo}}</td>
+            <td class="border-0 px-1 py-2 text-muted text-truncate" style="font-size: 12px;">{{row.applicationNo}}</td>
+            <td class="border-0 px-1 py-2 text-muted text-truncate" style="font-size: 12px;">{{row.transactionNo}}</td>
 
-        <td [style]="{ border: 'none', textAlign: 'center' }">
-          <span [style]="{
-            padding: '4px 12px',
-            borderRadius: '6px',
-            fontSize: '11px',
-            fontWeight: '600',
-            backgroundColor: row.status === 'Pending' ? '#e0f7fa' : '#e3f2fd',
-            color: row.status === 'Pending' ? '#00acc1' : '#2196f3',
-            border: '1px solid' + (row.status === 'Pending' ? '#b2ebf2' : '#bbdefb')
-          }">{{row.status}}</span>
-        </td>
+            <td class="border-0 px-1 py-2 text-center">
+              <span class="badge rounded-pill px-2 py-1 text-primary bg-primary-subtle border border-primary-subtle" 
+                    style="font-size: 10px; font-weight: 600;">
+                {{row.status}}
+              </span>
+            </td>
 
-        <td [style]="{ border: 'none', fontSize: '13px', fontWeight: '700' }">{{row.type}}</td>
+            <td class="border-0 px-1 py-2 fw-bold" style="font-size: 12px;">{{row.type}}</td>
 
-        <td [style]="{ border: 'none' }">
-          <div [style]="{ fontSize: '14px' }">{{row.dueDate}}</div>
-          <div [style]="{ fontSize: '11px', color: '#999' }">{{row.dueTime}}</div>
-        </td>
+            <td class="border-0 px-1 py-2">
+              <div style="font-size: 11px;">{{row.dueDate}}</div>
+              <small class="text-muted d-block" style="font-size: 10px;">{{row.dueTime}}</small>
+            </td>
 
-        <td [style]="{ border: 'none', textAlign: 'center' }">
-          <div [style]="{ backgroundColor: '#e0e0e0', width: '120px', height: '25px', margin: 'auto', borderRadius: '4px', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', paddingRight: '5px' }">
-            <i class="pi pi-sort-down-fill" [style]="{ fontSize: '10px' }"></i>
+            <td class="border-0 px-1 py-2 text-center">
+              <p-select 
+                [options]="reasons" 
+                [(ngModel)]="row.reason" 
+                appendTo="body"
+                [style]="{'width': '100%', 'font-size': '11px', 'height': '32px'}"
+                placeholder="Select">
+              </p-select>
+            </td>
+
+            <td class="border-0 px-1 py-2 text-center">
+              <div class="d-flex align-items-center justify-content-center gap-1">
+                <input 
+                  type="text" 
+                  pInputText 
+                  [(ngModel)]="row.amountAllocation" 
+                  placeholder="Amt"
+                  class="form-control text-center px-1" 
+                  style="width: 65px; height: 32px; font-size: 11px;" />
+                
+                <p-select 
+                  [options]="percentages" 
+                  [(ngModel)]="row.allocation" 
+                  appendTo="body"
+                  placeholder="%"
+                  [style]="{'width': '65px', 'height': '32px', 'font-size': '11px'}"
+                  class="text-start">
+                </p-select>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="paginatorright">
+          <div class="d-flex align-items-center gap-2 py-1">
+            <span class="text-muted" style="font-size: 11px;">
+              Page {{ ((dt?.first ?? 0) / (dt?.rows ?? 1)) + 1 }} of {{ Math.ceil((dt?.totalRecords ?? 0) / (dt?.rows ?? 1)) }}
+            </span>
+
+            <p-button 
+              icon="pi pi-angle-left" 
+              [outlined]="true" 
+              severity="secondary"
+              [disabled]="(dt?.first ?? 0) === 0"
+              (click)="dt.first = (dt?.first ?? 0) - (dt?.rows ?? 0)"
+              styleClass="rounded"
+              [style]="{'width': '28px', 'height': '28px'}">
+            </p-button>
+
+            <p-button 
+              icon="pi pi-angle-right" 
+              [outlined]="true" 
+              severity="secondary"
+              [disabled]="(dt?.first ?? 0) + (dt?.rows ?? 0) >= (dt?.totalRecords ?? 0)"
+              (click)="dt.first = (dt?.first ?? 0) + (dt?.rows ?? 0)"
+              styleClass="rounded"
+              [style]="{'width': '28px', 'height': '28px'}">
+            </p-button>
           </div>
-        </td>
-
-        <td [style]="{ border: 'none', textAlign: 'center' }">
-          <div [style]="{ display: 'flex', alignItems: 'center', gap: '5px', justifyContent: 'center' }">
-            <div [style]="{ backgroundColor: '#e0e0e0', width: '80px', height: '25px', borderRadius: '4px' }"></div>
-            <div [style]="{ backgroundColor: '#e0e0e0', padding: '2px 8px', borderRadius: '4px', fontSize: '12px', display: 'flex', alignItems: 'center', gap: '5px' }">
-              {{row.allocation}} <i class="pi pi-sort-down-fill" [style]="{ fontSize: '10px' }"></i>
-            </div>
-          </div>
-        </td>
-        
-        <td [style]="{ border: 'none' }"></td>
-      </tr>
-    </ng-template>
-  </p-table>
-
-  <div [style]="{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginTop: '15px', gap: '10px' }">
-    <span [style]="{ fontSize: '14px', color: '#333' }">Page 1 of 4</span>
-    <button [style]="{ border: '1px solid #ddd', backgroundColor: '#fff', borderRadius: '4px', padding: '5px' }">
-      <i class="pi pi-angle-left" [style]="{ color: '#ccc' }"></i>
-    </button>
-    <button [style]="{ border: '1px solid #ddd', backgroundColor: '#fff', borderRadius: '4px', padding: '5px' }">
-      <i class="pi pi-angle-right" [style]="{ color: '#666' }"></i>
-    </button>
+        </ng-template>
+      </p-table>
+    </div>
   </div>
 </div>

@@ -1,81 +1,103 @@
-<div [style]="{ padding: '40px', backgroundColor: '#fff', fontFamily: 'sans-serif', borderRadius: '15px', border: '1px solid #f0f0f0' }">
+<div class="container-fluid p-4" style="font-family: sans-serif; background-color: #fff;">
   
-  <div [style]="{ display: 'flex', justifyContent: 'space-between', marginBottom: '40px', padding: '0 20px' }">
-    <div [style]="{ display: 'flex', gap: '15px', fontSize: '18px' }">
-      <span [style]="{ color: '#0056b3', fontWeight: '500' }">Settlement Transfer Receipt</span>
-      <span [style]="{ color: '#0056b3' }">:</span>
-      <span [style]="{ color: '#0056b3', fontWeight: 'bold' }">{{ receiptNo }}</span>
+  <div class="d-flex justify-content-between mb-4 px-3">
+    <div class="d-flex gap-3 fs-5">
+      <span class="text-primary fw-medium">Settlement Transfer Receipt</span>
+      <span class="text-primary">:</span>
+      <span class="text-primary fw-bold">{{ receiptNo }}</span>
     </div>
-    <div [style]="{ display: 'flex', gap: '15px', fontSize: '18px' }">
-      <span [style]="{ color: '#0056b3', fontWeight: '500' }">Settlement Transfer Request Amount</span>
-      <span [style]="{ color: '#0056b3' }">:</span>
-      <span [style]="{ color: '#0056b3', fontWeight: 'bold' }">{{ requestAmount | number:'1.2-2' }}</span>
+    <div class="d-flex gap-3 fs-5">
+      <span class="text-primary fw-medium">Settlement Transfer Request Amount</span>
+      <span class="text-primary">:</span>
+      <span class="text-primary fw-bold">{{ requestAmount | number:'1.2-2' }}</span>
     </div>
   </div>
 
-  <div [style]="{ display: 'flex', gap: '30px' }">
-    <div [style]="{ flex: '1' }">
-      <p-table [value]="details" [tableStyle]="{ 'min-width': '100%' }">
-        <ng-template pTemplate="header">
-          <tr [style]="{ borderBottom: '1px solid #f0f0f0' }">
-            <th [style]="{ border: 'none', textAlign: 'left', padding: '15px', color: '#333', fontSize: '14px' }">Facility No</th>
-            <th [style]="{ border: 'none', textAlign: 'left', padding: '15px', color: '#333', fontSize: '14px' }">Amount</th>
-            <th [style]="{ border: 'none', textAlign: 'left', padding: '15px', color: '#333', fontSize: '14px' }">BSP NO</th>
-            <th [style]="{ border: 'none', textAlign: 'left', padding: '15px', color: '#333', fontSize: '14px' }">BSP NO</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-row>
-          <tr [style]="{ borderBottom: '1px solid #f0f0f0' }">
-            <td [style]="{ border: 'none', padding: '15px', fontSize: '14px' }">{{ row.facilityNo }}</td>
-            <td [style]="{ border: 'none', padding: '15px', fontSize: '14px' }">{{ row.amount | number:'1.2-2' }}</td>
-            <td [style]="{ border: 'none', padding: '15px', fontSize: '14px' }">{{ row.bspNo }}</td>
-            <td [style]="{ border: 'none', padding: '15px', fontSize: '14px' }">{{ row.date }}</td>
-          </tr>
-        </ng-template>
-      </p-table>
-
-      <div [style]="{ display: 'flex', alignItems: 'center', marginTop: '50px', gap: '40px' }">
-        <label [style]="{ width: '200px', fontSize: '20px', fontWeight: 'bold', textAlign: 'right' }">Request Reason</label>
-        <div [style]="{ flex: '1', backgroundColor: '#d9d9d9', height: '60px', borderRadius: '8px', display: 'flex', alignItems: 'center', padding: '0 20px', justifyContent: 'space-between' }">
-           <span [style]="{ color: '#666' }">{{ selectedReason }}</span>
-           <i class="pi pi-chevron-down" [style]="{ fontSize: '14px' }"></i>
+  <div class="d-flex flex-column gap-4">
+    
+    <div class="row align-items-start">
+      <div class="col">
+        <div class="card border-0 basic-table table-responsive">
+          <p-table [value]="details" [rowHover]="true" class="table table-striped px-2">
+            <ng-template pTemplate="header">
+              <tr>
+                <th class="border-0 p-3 text-dark fs-small">Facility No</th>
+                <th class="border-0 p-3 text-dark fs-small">Amount</th>
+                <th class="border-0 p-3 text-dark fs-small">BSP NO</th>
+                <th class="border-0 p-3 text-dark fs-small">Date</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-row>
+              <tr class="border-bottom">
+                <td class="border-0 p-3 text-secondary">{{ row.facilityNo }}</td>
+                <td class="border-0 p-3 text-secondary">{{ row.amount | number:'1.2-2' }}</td>
+                <td class="border-0 p-3 text-secondary">{{ row.bspNo }}</td>
+                <td class="border-0 p-3 text-secondary">{{ row.date }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
         </div>
       </div>
-
-      <div [style]="{ display: 'flex', alignItems: 'flex-start', marginTop: '30px', gap: '40px' }">
-        <label [style]="{ width: '200px', fontSize: '20px', fontWeight: 'bold', textAlign: 'right', marginTop: '15px' }">Remarks</label>
-        <div [style]="{ flex: '1', backgroundColor: '#d9d9d9', height: '100px', borderRadius: '8px', padding: '15px' }">
-          </div>
+      <div class="col-md-2">
+        <p-button 
+          [raised]="true" 
+          label="Attachment" 
+          icon="pi pi-paperclip" 
+          iconPos="right" 
+          class="custom-btn w-100">
+        </p-button>
       </div>
     </div>
 
-    <div [style]="{ width: '150px', display: 'flex', flexDirection: 'column', gap: '150px', paddingTop: '20px' }">
-      <p-button 
-          label="Attachment" 
-          icon="pi pi-paperclip" 
-          iconPos="right"
-          [style]="{ backgroundColor: '#a2d2ff', border: 'none', color: '#333', borderRadius: '12px', padding: '10px 15px', width: '100%', fontSize: '14px' }">
-      </p-button>
-
-      <p-button 
+    <div class="row align-items-center">
+      <div class="col d-flex align-items-center gap-4">
+        <label class="fw-bold text-end" style="width: 200px; font-size: 1.2rem;">Request Reason</label>
+        <div class="flex-grow-1">
+          <p-floatlabel variant="on">
+            <p-select 
+              [options]="reasons" 
+              [(ngModel)]="selectedReason" 
+              class="w-100" 
+              placeholder="Select Reason"
+              appendTo="body">
+            </p-select>
+          </p-floatlabel>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <p-button 
+          [raised]="true" 
           label="PRINT" 
           icon="pi pi-print" 
-          iconPos="right"
-          [style]="{ backgroundColor: '#a2d2ff', border: 'none', color: '#333', borderRadius: '12px', padding: '12px 15px', width: '100%', fontSize: '14px', fontWeight: 'bold' }">
-      </p-button>
+          iconPos="right" 
+          class="custom-btn w-100">
+        </p-button>
+      </div>
+    </div>
 
-      <p-button 
+    <div class="row align-items-start">
+      <div class="col d-flex align-items-start gap-4">
+        <label class="fw-bold text-end mt-2" style="width: 200px; font-size: 1.2rem;">Remarks</label>
+        <div class="flex-grow-1">
+          <textarea 
+            rows="4" 
+            pInputTextarea 
+            class="form-control w-100" 
+            style="border: 1px solid #dee2e6;"
+            [(ngModel)]="remarks">
+          </textarea>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <p-button 
+          [raised]="true" 
           label="SAVE" 
           icon="pi pi-save" 
-          iconPos="right"
-          [style]="{ backgroundColor: '#a2d2ff', border: 'none', color: '#333', borderRadius: '12px', padding: '12px 15px', width: '100%', fontSize: '14px', fontWeight: 'bold' }">
-      </p-button>
-      <p-button
-        [raised]="true"
-        label="Save"
-        class="custom-btn"
-        icon="pi pi-save"
-      />
+          iconPos="right" 
+          class="custom-btn w-100">
+        </p-button>
+      </div>
     </div>
+
   </div>
 </div>

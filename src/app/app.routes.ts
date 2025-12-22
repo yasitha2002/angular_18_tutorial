@@ -10,6 +10,7 @@ import { PgOneComponent } from './components/pg-one/pg-one.component';
 import { PgTwoComponent } from './components/pg-two/pg-two.component';
 import { PgThreeComponent } from './components/pg-three/pg-three.component';
 import { PgFourComponent } from './components/pg-four/pg-four.component';
+import { PgFiveComponent } from './components/pg-five/pg-five.component';
 
 export const routes: Routes = [
 
@@ -65,6 +66,10 @@ export const routes: Routes = [
     {
         path:'pgFour',
         component:PgFourComponent ,
+    },
+    {
+        path:'pgFive',
+        component:PgFiveComponent ,
     }
         
     

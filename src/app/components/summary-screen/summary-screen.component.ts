@@ -4,6 +4,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { SelectModule } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
+import { FloatLabel } from 'primeng/floatlabel';
 
 interface SettlementDetail {
   facilityNo: string;
@@ -15,7 +16,7 @@ interface SettlementDetail {
 @Component({
   selector: 'app-summary-screen',
   standalone: true,
-  imports: [CommonModule, TableModule, ButtonModule, SelectModule, FormsModule],
+  imports: [CommonModule, TableModule, ButtonModule, SelectModule, FormsModule,FloatLabel],
   templateUrl: './summary-screen.component.html',
   styleUrl: './summary-screen.component.css'
 })

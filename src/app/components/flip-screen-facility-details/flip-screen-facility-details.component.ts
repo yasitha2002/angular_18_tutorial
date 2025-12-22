@@ -4,6 +4,7 @@ import { TableModule } from 'primeng/table';
 import { SelectModule } from 'primeng/select';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
+import { FloatLabel } from 'primeng/floatlabel';
 
 interface AllocationDetail {
   facilityNo: string;
@@ -16,7 +17,7 @@ interface AllocationDetail {
 @Component({
   selector: 'app-flip-screen-facility-details',
   standalone: true,
-  imports: [CommonModule, TableModule, SelectModule, ButtonModule, FormsModule],
+  imports: [CommonModule, TableModule, SelectModule, ButtonModule, FormsModule,FloatLabel],
   templateUrl: './flip-screen-facility-details.component.html',
   styleUrl: './flip-screen-facility-details.component.css'
 })
@@ -24,6 +25,8 @@ export class FlipScreenFacilityDetailsComponent {
     receiptAmount = 78500.00;
   allocatedTotal = 78500.00;
   remainingBalance = 0.00;
+
+  selectedReason: string = '';
 
   reasons = [
     { label: 'Reallocation', value: 'Reallocation' },
