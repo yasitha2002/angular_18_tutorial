@@ -1,0 +1,26 @@
+<div class="card">
+     <div class="card-body">
+<div [style]="{ 
+    width: '31%', 
+    float: 'left', 
+    margin: '1%', 
+    padding: '20px', 
+    backgroundColor: '#fff', 
+    borderRadius: '8px', 
+    boxShadow: '0 4px 10px rgba(0,0,0,0.1)', 
+    minHeight: '450px', 
+    boxSizing: 'border-box' 
+}">
+  <h5 class="card-title" [style]="{ color: '#007bff', textAlign: 'center', marginBottom: '30px', fontWeight: '500' }">Facility Summary</h5>
+  
+  <div *ngFor="let item of summary" [style]="{ marginBottom: '25px' }">
+    <div [style]="{ display: 'flex', justifyContent: 'space-between', paddingBottom: '5px' }">
+      <span [style]="{ color: '#004a99', fontSize: '14px' }">{{item.label}}</span>
+      <span [style]="{ color: '#004a99', fontSize: '14px' }">{{item.value | number:'1.2-2'}}</span>
+    </div>
+    <div [style]="{ width: '15px', borderBottom: '2px solid #007bff', marginTop: '2px' }"></div>
+    <div [style]="{ borderBottom: '1px solid #f0f0f0', marginTop: '5px' }"></div>
+  </div>
+</div>
+ </div>
+</div>
