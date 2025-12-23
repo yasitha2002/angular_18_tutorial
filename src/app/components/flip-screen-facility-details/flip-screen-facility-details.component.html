@@ -38,7 +38,7 @@
         [paginator]="true" 
         [rows]="3"
         currentPageReportTemplate="Page {currentPage} of {totalPages}"
-        [showCurrentPageReport]="true"
+        
         [tableStyle]="{'min-width': '1000px', 'table-layout': 'fixed'}"
         class="table table-striped px-2">
         
@@ -53,7 +53,7 @@
         </ng-template>
 
         <ng-template pTemplate="body" let-row>
-          <tr class="border-bottom">
+          <tr class="border-bottom" style="height: 70px;">
             <td class="border-0 p-3">{{ row.facilityNo }}</td>
             <td class="border-0 p-3">{{ row.amount | number:'1.2-2' }}</td>
             <td class="border-0 p-3">{{ row.bspNo }}</td>

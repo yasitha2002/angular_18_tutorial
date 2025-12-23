@@ -6,7 +6,7 @@ import { FacilitySummaryComponent } from '../facility-summary/facility-summary.c
 
 @Component({
   selector: 'app-pg-two',
-  
+  standalone:true,
   imports: [BSPTableComponent,AllocationSummaryComponent,FacilityTransactionHistoryComponent,FacilitySummaryComponent],
   templateUrl: './pg-two.component.html',
   styleUrl: './pg-two.component.css'
