@@ -1,0 +1,110 @@
+/* Layout & Container */
+.bsp-container {
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+}
+
+/* Search Section */
+.search-input {
+    width: 300px;
+    background: #F8F9FA !important;
+    border: 1px solid #E9ECEF !important;
+}
+
+.find-btn {
+    background-color: #3B82F6 !important;
+    border: none !important;
+    border-radius: 0 4px 4px 0 !important;
+}
+
+/* Summary Cards */
+.summary-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.summary-card label {
+    font-size: 14px;
+    color: #093E8C;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.value-box {
+    background-color: #B2D7FF;
+    color: #000;
+    padding: 8px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    min-width: 140px;
+    text-align: center;
+}
+
+/* Banner */
+.bsp-banner {
+    background-color: #D9D9D9;
+    padding: 15px;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Table Customization */
+::ng-deep .custom-table .p-datatable-thead > tr > th {
+    background-color: #fff !important;
+    color: #333;
+    font-weight: 600;
+    border: none;
+    padding: 1.5rem 0.5rem;
+}
+
+::ng-deep .custom-table .p-checkbox .p-checkbox-box {
+    border-radius: 4px;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.pending {
+    background-color: #E0F2FE;
+    color: #0369A1;
+}
+
+.running {
+    background-color: #D1FAE5;
+    color: #065F46;
+}
+
+/* Table Inputs & Dropdowns */
+.table-dropdown {
+    width: 100%;
+    background: #E5E7EB;
+    border: none !important;
+}
+
+.table-input {
+    width: 80px !important;
+    height: 35px;
+    background: #E5E7EB !important;
+    border: none !important;
+}
+
+.small-table-dropdown {
+    width: 70px;
+    background: #E5E7EB;
+    border: none !important;
+}
+
+/* Pagination Buttons */
+.nav-btn {
+    border: 1px solid #E5E7EB !important;
+    height: 32px !important;
+    width: 32px !important;
+    padding: 0 !important;
+}

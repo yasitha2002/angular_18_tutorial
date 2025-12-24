@@ -14,7 +14,7 @@ import { InputTextModule } from 'primeng/inputtext';
   templateUrl: './bsptable.component.html'
 })
 export class BSPTableComponent implements OnInit {
-  @ViewChild('dt') dt!: Table;
+
 
   
   // Form Fields
@@ -23,39 +23,6 @@ export class BSPTableComponent implements OnInit {
   approvalReason: string = '';
   rejectionReason: string = '';
 
-  get currentPage(): number {
-    // If dt or dt.rows is undefined, default to page 1
-    if (!this.dt || !this.dt.rows) {
-      return 1;
-    }
-    return Math.floor((this.dt.first ?? 0) / (this.dt.rows ?? 1)) + 1;
-  }
-
-  get totalPages(): number {
-    // If table isn't initialized or has no records, default to 0
-    if (!this.dt || !this.dt.rows || !this.dt.totalRecords) {
-      return 0;
-    }
-    return Math.ceil((this.dt.totalRecords ?? 0) / (this.dt.rows ?? 1));
-  }
-  
-  // You can also simplify the button clicks by adding these methods:
- prevPage() {
-  // Check if dt and rows exist before performing arithmetic
-  if (this.dt && this.dt.rows && (this.dt.first ?? 0) > 0) {
-    this.dt.first = (this.dt.first ?? 0) - this.dt.rows;
-  }
-}
-
-nextPage() {
-  // Check if dt, rows, and totalRecords exist
-  if (this.dt && this.dt.rows && this.dt.totalRecords !== undefined) {
-    const currentFirst = this.dt.first ?? 0;
-    if ((currentFirst + this.dt.rows) < this.dt.totalRecords) {
-      this.dt.first = currentFirst + this.dt.rows;
-    }
-  }
-}
   reasons = [
     { label: 'Reallocation', value: 'Reallocation' },
     { label: 'Refund', value: 'Refund' },

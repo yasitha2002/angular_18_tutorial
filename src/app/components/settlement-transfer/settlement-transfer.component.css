@@ -1,0 +1,86 @@
+/* Header Summary Styling */
+::ng-deep .no-border-table .p-datatable {
+    border: none !important;
+}
+
+::ng-deep .no-border-table .p-datatable-wrapper {
+    border: none !important;
+}
+
+.header-summary {
+    background-color: #f8f9fa;
+    
+}
+
+.label-text {
+    color: #034D8E; /* Using a deeper blue for the "Settlement Transfer Receipt" label */
+    font-weight: 545;
+    font-size: 1.1rem;
+}
+
+.value-text {
+    color: #034D8E; /* Darker navy for the actual values */
+    font-weight: 545;
+    font-size: 1.1rem;
+}
+
+::ng-deep .basic-table .p-datatable-thead > tr > th {
+    background-color: transparent !important; /* Removes the light blue */
+    color: #333 !important;
+    font-weight: 600;
+    font-size: 13px;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid #f0f0f0 !important; /* Keeps only the bottom divider */
+}
+
+/* Remove border from the last row to keep it clean */
+::ng-deep .basic-table .p-datatable-tbody > tr:last-child > td {
+    border-bottom: none !important;
+}
+
+/* Action Button Colors */
+::ng-deep .approve-btn .p-button {
+    background-color: #a3ffc0 !important; 
+    border-color: #a3ffc0 !important;
+    color: #000 !important;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+::ng-deep .reject-btn .p-button {
+    background-color: #ffadaa !important; 
+    border-color: #ffadaa !important;
+    color: #000 !important;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+/* Form Controls */
+.custom-textarea {
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.custom-input {
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Aligning Labels */
+label {
+    color: #333;
+    font-weight: 600 !important;
+}
+.text-data {
+    color: #555555 !important; /* Slightly muted data text */
+}
+
+.no-outer-border {
+    border: none !important;
+    box-shadow: none !important;
+}

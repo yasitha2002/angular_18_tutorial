@@ -1,0 +1,184 @@
+.facility-container {
+  padding: 30px;
+  background-color: #ffffff;
+}
+
+/* Summary Cards Section */
+.summary-cards {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.summary-card {
+  flex: 1;
+  background: linear-gradient(135deg, #93c5fd 0%, #7db4f8 100%);
+  border-radius: 12px;
+  padding: 16px 24px;
+  text-align: center;
+}
+
+.card-label {
+  color: #1e3a8a;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.card-value {
+  color: #1e3a8a;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.percentage-badge {
+  background-color: #d1d5db;
+  color: #1f2937;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* Table Styles */
+.table-wrapper {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+::ng-deep .allocation-table {
+  background: white;
+}
+
+::ng-deep .allocation-table .p-datatable-thead > tr > th {
+  background-color: #f9fafb;
+  color: #111827;
+  font-weight: 600;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  font-size: 14px;
+}
+
+::ng-deep .allocation-table .p-datatable-tbody > tr {
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+::ng-deep .allocation-table .p-datatable-tbody > tr > td {
+  padding: 16px 20px;
+  color: #111827;
+  font-size: 14px;
+}
+
+/* Reason Dropdown */
+::ng-deep .reason-dropdown {
+  width: 100%;
+  background-color: #e5e7eb !important;
+  border: none !important;
+  border-radius: 6px !important;
+}
+
+::ng-deep .reason-dropdown .p-select-label {
+  color: #374151 !important;
+  font-weight: 500 !important;
+  padding: 10px 12px !important;
+}
+
+::ng-deep .reason-dropdown .p-select-dropdown {
+  color: #374151 !important;
+}
+
+/* Allocation Amount */
+.allocation-amount {
+  background-color: #e5e7eb;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* Pagination */
+::ng-deep .allocation-table .p-paginator-left,
+::ng-deep .allocation-table .p-paginator-pages,
+::ng-deep .allocation-table .p-paginator-first,
+::ng-deep .allocation-table .p-paginator-prev,
+::ng-deep .allocation-table .p-paginator-next,
+::ng-deep .allocation-table .p-paginator-last,
+::ng-deep .allocation-table .p-paginator-current {
+  display: none !important;
+}
+
+::ng-deep .allocation-table .p-paginator {
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 16px 20px;
+  justify-content: flex-end;
+}
+
+.custom-pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+::ng-deep .nav-button {
+  color: #6b7280 !important;
+  padding: 4px !important;
+}
+
+::ng-deep .nav-button:hover {
+  background-color: #f3f4f6 !important;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+::ng-deep .confirm-btn {
+  background-color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  color: white !important;
+  border-radius: 8px !important;
+  padding: 12px 28px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+::ng-deep .confirm-btn:hover {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+::ng-deep .confirm-btn .pi-check {
+  margin-left: 8px;
+}
+
+::ng-deep .save-btn {
+  background-color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  color: white !important;
+  border-radius: 8px !important;
+  padding: 12px 32px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+::ng-deep .save-btn:hover {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+}

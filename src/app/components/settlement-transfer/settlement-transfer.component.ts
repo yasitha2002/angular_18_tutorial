@@ -40,6 +40,10 @@ export class SettlementTransferComponent implements OnInit {
   details: any[] = [
     { facilityNo: '031511400011', amount: 8875.00, bspNo: 'IN000000365', reason: null, allocation: '8,875.00' },
     { facilityNo: '031511400012', amount: 20000.00, bspNo: 'IN000000356', reason: null, allocation: '20,000.00' },
+    { facilityNo: '031611300016', amount: 30000.00, bspNo: 'IN000000164', reason: null, allocation: '30,000.00' },
+    { facilityNo: '031611300016', amount: 30000.00, bspNo: 'IN000000164', reason: null, allocation: '30,000.00' },
+    { facilityNo: '031611300016', amount: 30000.00, bspNo: 'IN000000164', reason: null, allocation: '30,000.00' },
+    { facilityNo: '031611300016', amount: 30000.00, bspNo: 'IN000000164', reason: null, allocation: '30,000.00' },
     { facilityNo: '031611300016', amount: 30000.00, bspNo: 'IN000000164', reason: null, allocation: '30,000.00' }
   ];
 

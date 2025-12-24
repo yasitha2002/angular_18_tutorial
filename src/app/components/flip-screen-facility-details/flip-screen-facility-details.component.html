@@ -1,112 +1,76 @@
-<div class="p-4" style="background-color: #fff; font-family: sans-serif;">
-  
-  <div class="d-flex justify-content-between align-items-center mb-5 px-2">
-    <div class="text-center">
-      <div class="text-primary mb-2 fw-medium">Receipt- Amount</div>
-      <div class="px-5 py-2 rounded-pill fw-bold bg-primary-subtle text-primary" 
-           style="min-width: 180px; font-size: 1.1rem;">
-        {{ receiptAmount | number:'1.2-2' }}
-      </div>
+<div class="facility-container">
+  <!-- Summary Section -->
+  <div class="summary-cards">
+    <div class="summary-card">
+      <div class="card-label">Receipt- Amount</div>
+      <div class="card-value">{{ receiptAmount | number:'1.2-2' }}</div>
     </div>
-
-    <div class="text-center d-flex align-items-center gap-3">
-      <div>
-        <div class="text-primary mb-2 fw-medium">Allocated Amount</div>
-        <div class="px-5 py-2 rounded-pill fw-bold bg-primary-subtle text-primary" 
-             style="min-width: 180px; font-size: 1.1rem;">
-          {{ allocatedTotal | number:'1.2-2' }}
-        </div>
-      </div>
-      <div class="badge bg-secondary-subtle text-dark p-2 px-3 mt-4" style="border-radius: 6px;">100%</div>
-    </div>
-
-    <div class="text-center">
-      <div class="text-primary mb-2 fw-medium">Remaining Balance</div>
-      <div class="px-5 py-2 rounded-pill fw-bold bg-primary-subtle text-primary" 
-           style="min-width: 180px; font-size: 1.1rem;">
-        {{ remainingBalance | number:'1.2-2' }}
-      </div>
-    </div>
-  </div>
-
-  <div class="trezo-card-content">
-    <div class="card border-0 basic-table table-responsive">
-      <p-table 
-        #dt
-        [value]="details" 
-        [rowHover]="true" 
-        [paginator]="true" 
-        [rows]="3"
-        currentPageReportTemplate="Page {currentPage} of {totalPages}"
-        
-        [tableStyle]="{'min-width': '1000px', 'table-layout': 'fixed'}"
-        class="table table-striped px-2">
-        
-        <ng-template pTemplate="header">
-          <tr>
-            <th class="border-0 p-3 text-dark fs-small" style="width: 20%;">Facility No</th>
-            <th class="border-0 p-3 text-dark fs-small" style="width: 15%;">Amount</th>
-            <th class="border-0 p-3 text-dark fs-small" style="width: 20%;">BSP NO</th>
-            <th class="border-0 p-3 text-dark fs-small text-center" style="width: 250px;">Reason</th>
-            <th class="border-0 p-3 text-dark fs-small text-center" style="width: 200px;">Amount Allocation</th>
-          </tr>
-        </ng-template>
-
-        <ng-template pTemplate="body" let-row>
-          <tr class="border-bottom" style="height: 70px;">
-            <td class="border-0 p-3">{{ row.facilityNo }}</td>
-            <td class="border-0 p-3">{{ row.amount | number:'1.2-2' }}</td>
-            <td class="border-0 p-3">{{ row.bspNo }}</td>
-            
-            <td class="border-0 p-3 text-center">
-              <div style="width: 220px; margin: 0 auto;">
-                <p-floatlabel variant="on">
-                  <p-select 
-                    [options]="reasons" 
-                    [(ngModel)]="row.reason" 
-                    appendTo="body"
-                    class="w-100" 
-                    placeholder="Select Reason">
-                  </p-select>
-                </p-floatlabel>
-              </div>
-            </td>
-
-            <td class="border-0 p-3 text-center">
-              <div style="width: 150px; margin: 0 auto;">
-                <input 
-                  type="text" 
-                  pInputText 
-                  [(ngModel)]="row.allocatedAmount"
-                  class="form-control text-center w-100"
-                  style="height: 38px; font-size: 13px;"
-                />
-              </div>
-            </td>
-          </tr>
-        </ng-template>
-
-        <ng-template pTemplate="paginatorleft">
-            <span class="fs-small text-muted">Total Records: {{details.length}}</span>
-        </ng-template>
-      </p-table>
-    </div>
-  </div>
-
-  <div class="d-flex gap-3 mt-5">
-    <p-button 
-        label="CONFIRM" 
-        icon="pi pi-check-circle" 
-        iconPos="right" 
-        [raised]="true" 
-        class="custom-btn">
-    </p-button>
     
-    <p-button 
-        label="SAVE" 
-        [raised]="true" 
-        class="custom-btn" 
-        styleClass="px-5">
-    </p-button>
+    <div class="summary-card">
+      <div class="card-label">Allocated Amount</div>
+      <div class="card-value">{{ allocatedTotal | number:'1.2-2' }}</div>
+    </div>
+    
+    <div class="percentage-badge">100%</div>
+    
+    <div class="summary-card">
+      <div class="card-label">Remaining Balance</div>
+      <div class="card-value">{{ remainingBalance | number:'1.2-2' }}</div>
+    </div>
+  </div>
+
+  <!-- Allocation Details Table -->
+  <div class="table-wrapper">
+    <p-table 
+      [value]="details" 
+      styleClass="allocation-table"
+      [paginator]="true" 
+      [rows]="3"
+      [showCurrentPageReport]="false"
+      [showPageLinks]="false"
+      [showFirstLastIcon]="false">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Facility No</th>
+          <th>Amount</th>
+          <th>BSP NO</th>
+          <th>Reason</th>
+          <th>Amount Allocation</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-detail>
+        <tr>
+          <td>{{ detail.facilityNo }}</td>
+          <td>{{ detail.amount | number:'1.2-2' }}</td>
+          <td>{{ detail.bspNo }}</td>
+          <td>
+            <p-select 
+              [(ngModel)]="detail.reason" 
+              [options]="reasons" 
+              optionLabel="label" 
+              optionValue="value"
+              placeholder="Select Reason"
+              styleClass="reason-dropdown">
+            </p-select>
+          </td>
+          <td>
+            <div class="allocation-amount">{{ detail.allocatedAmount | number:'1.2-2' }}</div>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="paginatorright">
+        <div class="custom-pagination">
+          Page 1 of 2
+          <button pButton type="button" icon="pi pi-chevron-left" class="p-button-text nav-button"></button>
+          <button pButton type="button" icon="pi pi-chevron-right" class="p-button-text nav-button"></button>
+        </div>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="action-buttons">
+    <button pButton type="button" label="CONFIRM" icon="pi pi-check" iconPos="right" class="confirm-btn"></button>
+    <button pButton type="button" label="SAVE" class="save-btn"></button>
   </div>
 </div>

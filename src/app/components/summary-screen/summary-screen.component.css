@@ -1,0 +1,89 @@
+/* Container Defaults */
+.summary-container {
+    background-color: var(--whiteColor);
+    min-height: 100vh;
+}
+
+/* Header Typography */
+.summary-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header-label, .header-separator, .header-value {
+    color: #0056b3;
+    font-size: 1.3rem;
+    font-weight: 535;
+}
+
+.header-value {
+    margin-left: 1.25rem;
+}
+
+.table-data-black {
+    color: #000000 !important; /* Pure Black */
+    font-size: 1.25rem !important; /* Increased from 1.1rem */
+    font-weight: 500;
+}
+
+
+/* Table Styling */
+:host ::ng-deep .custom-receipt-table .p-datatable-thead > tr > th {
+    background-color: transparent !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    color: var(--blackColor) !important;
+    font-size: 1.1rem;
+    font-weight: 550;
+    padding: 1rem 0.5rem;
+}
+
+:host ::ng-deep .custom-receipt-table .p-datatable-tbody > tr > td {
+     border-bottom: 1px solid #f0f0f0 !important;
+    padding: 1.5rem 0.5rem;
+    
+}
+
+/* Input Section Labels */
+.input-section-label {
+    width: 300px; /* Fixed width to keep inputs aligned vertically */
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-align: right;
+    padding-right: 2rem;
+    color: var(--blackColor);
+}
+
+/* Gray Fields */
+.custom-gray-field {
+    background-color: #e0e0e0 !important;
+    border: none !important;
+    border-radius: 4px;
+}
+
+:host ::ng-deep .p-select.custom-gray-field {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.textarea-field {
+    padding: 0.75rem;
+    resize: none;
+}
+
+/* Action Buttons (Aligned to the right grid) */
+:host ::ng-deep .blue-action-btn .p-button {
+    background-color: #a3cfff !important;
+    border: none !important;
+    color: #000 !important;
+    border-radius: 12px !important; /* Slightly more rounded like screenshot */
+    padding: 0.8rem !important;
+    font-weight: 600 !important;
+}
+
+/* Ensure icons have space */
+:host ::ng-deep .p-button-icon {
+    margin-left: 0.5rem;
+}
+

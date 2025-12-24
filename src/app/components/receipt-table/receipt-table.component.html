@@ -1,68 +1,68 @@
-<div class="p-4" style="background-color: #fff; font-family: sans-serif;">
-  
-  <div class="trezo-card-content">
-    <div class="card border-0 basic-table table-responsive" style="overflow-y: hidden">
-      <p-table 
-        [value]="receipts" 
-        [paginator]="true" 
-        [rows]="3" 
-        [rowHover]="true"
-        [showCurrentPageReport]="true"
-        currentPageReportTemplate="Page {currentPage} of {totalPages}"
-        [tableStyle]="{ 'min-width': '100%' }"
-        class="table table-striped px-2"
-      >
-        <ng-template pTemplate="header">
-          <tr>
-            <th class="border-0 text-dark" style="background-color: transparent; padding: 15px; font-size: 14px;">Receipt No</th>
-            <th class="border-0 text-dark" style="background-color: transparent; padding: 15px; font-size: 14px;">Amount (LKR)</th>
-            <th class="border-0 text-dark" style="background-color: transparent; padding: 15px; font-size: 14px;">Receipt Date</th>
-            <th class="border-0" style="background-color: transparent;"></th>
-          </tr>
-        </ng-template>
-
-        <ng-template pTemplate="body" let-receipt>
-          <tr [style.background-color]="receipt.isSelected ? '#a2d2ff' : 'transparent'" class="border-bottom">
-            <td class="border-0 p-3 text-secondary">{{ receipt.receiptNo }}</td>
-            <td class="border-0 p-3 text-secondary">{{ receipt.amount | number:'1.2-2' }}</td>
-            <td class="border-0 p-3 text-secondary">
-              <div class="fw-medium" style="font-size: 14px;">{{ receipt.date }}</div>
-              <small class="text-muted" style="font-size: 11px;">{{ receipt.time }}</small>
-            </td>
-            <td class="border-0 p-3 text-end">
-              <p-button 
-                label="ADD" 
-                iconPos="right"
-                [raised]="true"
-                (click)="selectReceipt(receipt)"
-                class="custom-btn ml-3 mt-1"
-                [style]="{'border-radius': '13px', 'padding': '1px 3px'}"
-                icon="pi pi-plus"
-                
-              >
-              </p-button>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
+<div class="receipt-container">
+  <div class="table-wrapper">
+    <p-table 
+      [value]="receipts" 
+      styleClass="receipt-table"
+      [paginator]="true" 
+      [rows]="3"
+      [showCurrentPageReport]="false"
+      [showPageLinks]="false"
+      [showFirstLastIcon]="false"
+      [showJumpToPageDropdown]="false"
+      [showJumpToPageInput]="false">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Receipt No</th>
+          <th>Amount (LKR)</th>
+          <th>Receipt Date</th>
+          <th ></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-receipt>
+        <tr [class.selected-row]="receipt.isSelected">
+          <td>{{ receipt.receiptNo }}</td>
+          <td>{{ receipt.amount | number:'1.2-2' }}</td>
+          <td>
+            <div class="date-time">
+              <div class="date">{{ receipt.date }}</div>
+              <div class="time">{{ receipt.time }}</div>
+            </div>
+          </td>
+          <td >
+            <button 
+              pButton 
+              type="button" 
+              label="ADD" 
+              icon="pi pi-plus-circle" 
+              iconPos="right"
+              class="add-button"
+              (click)="selectReceipt(receipt)">
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="paginatorright">
+        <div class="custom-pagination">
+          Page 1 of 4
+          <button pButton type="button" icon="pi pi-chevron-left" class="p-button-text nav-button"></button>
+          <button pButton type="button" icon="pi pi-chevron-right" class="p-button-text nav-button"></button>
+        </div>
+      </ng-template>
+    </p-table>
   </div>
 
-  <div class="d-flex justify-content-between align-items-center mt-4">
-    <div class="d-flex align-items-center gap-4">
-      <div class="p-2 px-4 rounded" style="background-color: #fff5f8;">
-        <span class="text-primary fw-medium" style="font-size: 18px;">Receipt Amount -</span>
-      </div>
-      <span class="text-primary fw-bold" style="font-size: 20px;">RS.{{ selectedAmount | number:'1.2-2' }}</span>
+  <div class="summary">
+    <div class="amount-section">
+      <span class="label">Receipt Amount -</span>
+      <span class="label">RS.{{ selectedAmount | number:'1.2-2' }}</span>
     </div>
-
-    <p-button 
+    <button 
+      pButton 
+      type="button" 
       label="Confirm" 
-      icon="pi pi-check-circle" 
-      iconPos="right"
-      [raised]="true"
-      class="custom-btn"
-    >
-    </p-button>
+      icon="pi pi-check" 
+      iconPos="right" 
+      class="confirm-button">
+    </button>
   </div>
 </div>

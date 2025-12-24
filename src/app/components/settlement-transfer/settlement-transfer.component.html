@@ -1,38 +1,46 @@
 <div class="container-fluid py-4">
-    <div class="row align-items-center mb-4 bg-light p-3 border-radius shadow-sm mx-0">
-        <div class="col-md-6 text-center border-end">
-            <span class="text-primary fw-medium fs-5">Settlement Transfer Receipt :</span>
-            <span class="ms-3 fs-5 text-dark fw-bold">{{ receiptNo }}</span>
+    <div class="row align-items-center  ">
+        <div class="col-md-6 text-center border-end py-3">
+            <span class="label-text">Settlement Transfer Receipt :</span>
+            <span class="ms-3 value-text">{{ receiptNo }}</span>
         </div>
-        <div class="col-md-6 text-center">
-            <span class="text-primary fw-medium fs-5">Settlement Transfer Request Amount :</span>
-            <span class="ms-3 fs-5 text-dark fw-bold">{{ requestAmount | number:'1.2-2' }}</span>
+        <div class="col-md-6 text-center py-3">
+            <span class="label-text">Settlement Transfer Request Amount :</span>
+            <span class="ms-3 value-text">{{ requestAmount | number:'1.2-2' }}</span>
         </div>
     </div>
 
     <div class="trezo-card-content mb-4">
-        <div class="card border-0 basic-table table-responsive">
-            <p-table [value]="details" [rowHover]="true" class="table table-striped px-2">
+        <div class="card border-0 basic-table table-responsive no-outer-border no-border-table">
+            <p-table 
+            [value]="details" 
+            [rowHover]="true" 
+            class="table px-2"
+            [paginator]="true" 
+             [rows]="3" 
+            >
+
                 <ng-template pTemplate="header">
                     <tr>
-                        <th class="border-0 p-3 text-dark fs-small">Facility No</th>
-                        <th class="border-0 p-3 text-dark fs-small">Amount</th>
-                        <th class="border-0 p-3 text-dark fs-small">BSP NO</th>
-                        <th class="border-0 p-3 text-dark fs-small" style="width: 25%">Reason</th>
-                        <th class="border-0 p-3 text-dark fs-small text-center">Amount Allocation</th>
+                        <th class="p-3">Facility No</th>
+                        <th class="p-3">Amount</th>
+                        <th class="p-3">BSP NO</th>
+                        <th class="p-3" style="width: 22%">Reason</th>
+                        <th class="p-3 text-center" style="width: 10%">Amount Allocation</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-row>
-                    <tr class="border-bottom">
-                        <td class="border-0 p-3 text-secondary" >{{ row.facilityNo }}</td>
-                        <td class="border-0 p-3 text-secondary">{{ row.amount | number:'1.2-2' }}</td>
-                        <td class="border-0 p-3 text-secondary">{{ row.bspNo }}</td>
-                        <td class="border-0 p-3">
+                    <tr style="height: 60px;">
+                        <td class="p-5 text-data">{{ row.facilityNo }}</td>
+                        <td class="p-5 text-data">{{ row.amount | number:'1.2-2' }}</td>
+                        <td class="p-5 text-data">{{ row.bspNo }}</td>
+                        <td class="p-5">
                             <p-select [options]="reasons" [(ngModel)]="row.reason" appendTo="body"
-                                      class="w-100 custom-dropdown" placeholder="Select Reason">
+                                      class="w-100 custom-dropdown" placeholder="Select Reason"
+                                      optionLabel="label" optionValue="value">
                             </p-select>
                         </td>
-                        <td class="border-0 p-3 text-center">
+                        <td class="p-5 text-center">
                             <input type="text" pInputText [(ngModel)]="row.allocation" 
                                    class="form-control custom-input text-center mx-auto w-75" />
                         </td>
@@ -48,45 +56,45 @@
         </div>
     </div>
 
-    <div class="row mb-4 align-items-center">
-        <label class="col-md-3 fw-bold text-end pe-4 fs-5">Request Reason</label>
+    <div class="row mb-3 align-items-center">
+        <label class="col-md-3 fw-bold text-end pe-4 fs-6">Settlement Transfer Request Reason</label>
         <div class="col-md-9">
             <input type="text" pInputText class="form-control custom-input w-100" 
                    [(ngModel)]="requestReasonText" placeholder="Enter request reason..." />
         </div>
     </div>
 
-    <div class="row mb-5 align-items-start">
-        <label class="col-md-3 fw-bold text-end pe-4 fs-5 mt-2">Remarks</label>
+    <div class="row mb-4 align-items-start">
+        <label class="col-md-3 fw-bold text-end pe-4 fs-6 mt-1">Remarks</label>
         <div class="col-md-9">
-            <textarea rows="3" pInputTextarea class="form-control w-100 border" 
-                      [(ngModel)]="remarksText" placeholder="Enter remarks..."></textarea>
+            <textarea rows="2" pInputTextarea class="form-control w-100 custom-textarea" 
+                      [(ngModel)]="remarksText" placeholder="Example Remark"></textarea>
         </div>
     </div>
 
     <div class="row mb-3 align-items-center">
         <div class="col-md-2">
-            <p-button label="Approve" severity="success" [raised]="true" class="custom-btn w-100"></p-button>
+            <p-button label="Approve" severity="success" (click)="onApprove()" class="w-100 approve-btn"></p-button>
         </div>
         <div class="col-md-9 ps-3">
             <input type="text" pInputText class="form-control custom-input w-100" 
                    [(ngModel)]="approvalReason" placeholder="State the reason for the Approval." />
         </div>
         <div class="col-md-1 text-center">
-            <i class="pi pi-times-circle text-muted fs-4 cursor-pointer"></i>
+            <i class="pi pi-times-circle text-muted fs-4 cursor-pointer" (click)="approvalReason = ''"></i>
         </div>
     </div>
 
     <div class="row align-items-center">
         <div class="col-md-2">
-            <p-button label="Reject" severity="danger" [raised]="true" class="custom-btn w-100"></p-button>
+            <p-button label="Reject" severity="danger" (click)="onReject()" class="w-100 reject-btn"></p-button>
         </div>
-        <div class="col-md-9 ps-3">
-            <input type="text" pInputText class="form-control custom-input w-100" 
+        <div class="col-md-9 ps-3" >
+            <input type="text" pInputText class="form-control custom-input w-100 " 
                    [(ngModel)]="rejectionReason" placeholder="State the reason for the Rejection." />
         </div>
         <div class="col-md-1 text-center">
-            <i class="pi pi-times-circle text-muted fs-4 cursor-pointer"></i>
+            <i class="pi pi-times-circle  fs-4 cursor-pointer" (click)="rejectionReason = ''"></i>
         </div>
     </div>
 </div>
